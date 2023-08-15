@@ -5,7 +5,7 @@
   "license": "MIT",
   "homepage": "https://github.com/Benjythebee/esm-mailwind",
   "bin": {
-    "esm-mailwind": "./src/index.js"
+    "mailwind": "./src/index.js"
   },
   "type": "module",
   "author": "Benjy Larcher",
