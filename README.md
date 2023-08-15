@@ -1,12 +1,7 @@
 # Mailwind
 Use Tailwind CSS to design HTML emails.
 
-Tailwind makes it very easy to design websites, why not use it to design HTML emails? I've been using this for [volt.fm](https://volt.fm) and [pikaso.me](https://pikaso.me) and it has made my life a lot easier.
-
-## Install
-```
-npm install -g mailwind
-```
+This project is based of 'mailwind' developped by @soheilpro. However, I had a few problems when using mailwind. So I made this esm-friendly version to satisfy my needs.
 
 ## Difference with solheilpro/mailwind
 
@@ -17,6 +12,17 @@ npm install -g mailwind
 | Convert 'rem' to 'px' | ✔️  | ❌  |
 | Resolves CSS variables | ✔️  | ✔️  |
 | ESM-friendly | ✔️  | ❌  |
+
+## Install
+```
+npm install esm-mailwind --save-dev
+```
+
+or if you want to install globally:
+
+```
+npm install esm-mailwind -g
+```
 
 ## Usage
 
