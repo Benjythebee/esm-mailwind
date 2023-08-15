@@ -10,7 +10,7 @@ This project is based of 'mailwind' developped by @soheilpro. However, I had a f
 | Parse tailwind html | ✔️  | ✔️  |
 | Parse tailwind config | ✔️  | ✔️  |
 | Convert 'rem' to 'px' | ✔️  | ❌  |
-| Resolves CSS variables | ✔️  | ✔️  |
+| Resolves CSS variables | ✔️  | ❌  |
 | ESM-friendly | ✔️  | ❌  |
 
 ## Install
