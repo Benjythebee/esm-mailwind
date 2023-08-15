@@ -1,14 +1,14 @@
 {
-  "name": "mailwind",
-  "version": "2.2.0",
-  "description": "Use Tailwind CSS to design HTML emails.",
+  "name": "esm-mailwind",
+  "version": "1.0.0",
+  "description": "Use Tailwind CSS to design HTML emails. ESM version.",
   "license": "MIT",
-  "homepage": "https://github.com/soheilpro/mailwind",
+  "homepage": "https://github.com/Benjythebee/esm-mailwind",
   "bin": {
-    "mailwind": "./src/index.js"
+    "esm-mailwind": "./src/index.js"
   },
   "type": "module",
-  "author": "Soheil Rashidi",
+  "author": "Benjy Larcher",
   "dependencies": {
     "juice": "8.1.0",
     "rehype": "^12.0.1",

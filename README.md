@@ -137,6 +137,6 @@ will generate the following CSS and inlined HTML files:
 + http://github.com/benjythebee
 
 With credit due to:
-- Roheil Rashidi ((soheilpro)[https://github.com/soheilpro])
-- Jakob Heuser ((Jakoto)[https://github.com/jakobo])
+- Roheil Rashidi ( [soheilpro](https://github.com/soheilpro) )
+- Jakob Heuser ( [Jakoto](https://github.com/jakobo) )
 
