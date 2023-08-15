@@ -8,6 +8,16 @@ Tailwind makes it very easy to design websites, why not use it to design HTML em
 npm install -g mailwind
 ```
 
+## Difference with solheilpro/mailwind
+
+| Features | esm-mailwind      | mailwind |
+| ----------- | ----------- | ----------- |
+| Parse tailwind html | ✔️  | ✔️  |
+| Parse tailwind config | ✔️  | ✔️  |
+| Convert 'rem' to 'px' | ✔️  | ❌  |
+| Resolves CSS variables | ✔️  | ✔️  |
+| ESM-friendly | ✔️  | ❌  |
+
 ## Usage
 
 Design your HTML email using the Tailwind utility classes like you normally would for the web.
@@ -24,6 +34,13 @@ Or run this command to generate an inlined HTML file:
 mailwind --input-html email.html --output-html email-inlined.html
 ```
 
+If you want to specify your own base pixels per 1rem:
+
+```
+mailwind --input-html email.html --output-html email-inlined.html --base-px 16
+```
+
+
 ## Options
 
 `--input-css`
@@ -34,7 +51,7 @@ The path to your base CSS file. Use this if you need to write custom CSS. Defaul
 
 The path to your HTML email file.
 
-`--output-css`
+`--output-css` (optional)
 
 The path to the CSS file that will be generated.
 
@@ -42,9 +59,13 @@ The path to the CSS file that will be generated.
 
 The path to the inlined HTML file that will be generated.
 
-`--tailwind-config`
+`--tailwind-config` (optional)
 
 The path to your custom Tailwind configuration file. Defaults to [tailwind.config.js](./src/tailwind.config.js).
+
+`--base-px` (optional)
+
+The base number of pixels per 1rem; default = 16.
 
 ## Note
 
@@ -91,6 +112,12 @@ will generate the following CSS and inlined HTML files:
 ```
 
 ## Version History
++ **1.0.0**
+  + ESM support
+  + Parse CSS variables
+  + Add rem to px conversion
+
+### Version history before Fork of mailwind:
 + **2.2**
 	+ Tailwind CSS is now a peer dependency so you can `npm install` newer versions if you need to (Thanks [Songkeys](https://github.com/Songkeys))
 + **2.1**
@@ -103,23 +130,13 @@ will generate the following CSS and inlined HTML files:
 	+ Initial release
 
 ## Author
-**Soheil Rashidi**
+**Benjy Larcher** 
 
-+ http://soheilrashidi.com
-+ http://twitter.com/soheilpro
-+ http://github.com/soheilpro
++ https://benjylarcher.com
++ http://twitter.com/benjythebee
++ http://github.com/benjythebee
 
-## Copyright and License
-Copyright 2022 Soheil Rashidi.
+With credit due to:
+- Roheil Rashidi ((soheilpro)[https://github.com/soheilpro])
+- Jakob Heuser ((Jakoto)[https://github.com/jakobo])
 
-Licensed under the The MIT License (the "License");
-you may not use this work except in compliance with the License.
-You may obtain a copy of the License in the LICENSE file, or at:
-
-http://www.opensource.org/licenses/mit-license.php
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.

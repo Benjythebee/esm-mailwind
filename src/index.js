@@ -1,11 +1,18 @@
 #!/usr/bin/env node
+import path from 'path'
+import fs from 'fs'
+import os from 'os'
+import { spawn } from 'child_process'
+import yargs from 'yargs/yargs'
+import juice from 'juice'
+import hypeJuicedHtml from './hype.js'
+import postHypeCss from './post-hype.js'
+import { createRequire } from 'node:module';
+import { fileURLToPath } from 'url';
 
-const path = require('path');
-const fs = require('fs');
-const os = require('os');
-const { spawn } = require('child_process');
-const yargs = require('yargs/yargs');
-const juice = require('juice');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
 
 const argv = yargs(process.argv)
   .string('input-css')
@@ -13,11 +20,13 @@ const argv = yargs(process.argv)
   .string('output-css')
   .string('output-html')
   .string('tailwind-config')
+  .string('base-px')
   .describe('input-css', 'The path to your custom CSS file')
   .describe('input-html', 'The path to your input HTML file')
   .describe('output-css', 'The path to the CSS file that will be generated')
   .describe('output-html', 'The path to the inlined HTML file that will be generated')
   .describe('tailwind-config', 'The path to your custom Tailwind config file')
+  .describe('base-px', 'The base px value for 1rem, defaults to 16px')
   .example('$0 --input-html email.html --output-css style.css')
   .example('$0 --input-html email.html --output-html email-inlined.html')
   .argv;
@@ -83,12 +92,19 @@ async function main() {
     return;
   }
 
+  if (typeof argv['base-px'] != 'undefined' && isNaN(parseInt(argv['base-px']))) {
+    console.log('The --base-px flag should be a number.');
+    process.exit(1);
+    return;
+  }
+
   const tailwindcss_path = require.resolve('tailwindcss/lib/cli.js');
   const tailwind_config_path = argv['tailwind-config'] || path.resolve(__dirname, './tailwind.config.js');
   const input_css_path = argv['input-css'] || path.resolve(__dirname, './style.css');
   const output_css_path = argv['output-css'] || path.resolve(os.tmpdir(), 'mailwind.css');
   const input_html_path = argv['input-html'];
   const output_html_path = argv['output-html'];
+  const post_process_base_px = argv['base-px'] ? parseInt(argv['base-px']) : undefined;
 
   const result = await exec(process.argv0, [
     tailwindcss_path,
@@ -110,8 +126,12 @@ async function main() {
     const output_css = fs.readFileSync(output_css_path).toString();
 
     const inlined_html = inlineCSS(input_html, output_css);
+    const hyped_inline_html = hypeJuicedHtml(inlined_html)
 
-    fs.writeFileSync(output_html_path, inlined_html);
+    // Post process
+    const processedhtml = postHypeCss(hyped_inline_html,{basePx:post_process_base_px})
+
+    fs.writeFileSync(output_html_path, processedhtml);
   }
 }
 
