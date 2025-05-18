@@ -1,7 +1,7 @@
 # Mailwind
 Use Tailwind CSS to design HTML emails.
 
-This project is based of 'mailwind' developped by @soheilpro. However, I had a few problems when using mailwind. So I made this esm-friendly version to satisfy my needs.
+This project is not only an upgrade of @soheilpro's `mailwind` library, it also has some extra features such as CSS variable support, handlebar support, and rem to px conversion.
 
 ## Difference with solheilpro/mailwind
 
@@ -24,6 +24,8 @@ or if you want to install globally:
 ```
 npm install esm-mailwind -g
 ```
+
+Note: For tailwind >4 support, make a ticket!
 
 ## Usage
 
@@ -119,10 +121,14 @@ will generate the following CSS and inlined HTML files:
 ```
 
 ## Version History
++ **1.0.3**
+  + Added test suite
+  + Support Double handlebars `{{ }}`
 + **1.0.0**
   + ESM support
   + Parse CSS variables
   + Add rem to px conversion
+  + Update to Tailwind CSS 3.4.17
 
 ### Version history before Fork of mailwind:
 + **2.2**

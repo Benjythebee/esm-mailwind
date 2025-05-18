@@ -17,6 +17,12 @@
   "bin": {
     "mailwind": "./src/index.js"
   },
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
