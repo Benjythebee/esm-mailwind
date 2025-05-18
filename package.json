@@ -21,7 +21,7 @@
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "type": "module",
-  "author": "Benjy Larcher",
+  "author": "Benjy Larcher @benjythebee",
   "dependencies": {
     "juice": "8.1.0",
     "rehype": "^12.0.1",
