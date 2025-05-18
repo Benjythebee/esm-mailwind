@@ -7,6 +7,7 @@ import yargs from 'yargs/yargs'
 import juice from 'juice'
 import hypeJuicedHtml from './hype.js'
 import postHypeCss from './post-hype.js'
+import { protectTemplates, restoreTemplates } from './templates.js'
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'url';
 
@@ -124,14 +125,18 @@ async function main() {
   if (output_html_path) {
     const input_html = fs.readFileSync(input_html_path).toString();
     const output_css = fs.readFileSync(output_css_path).toString();
-
-    const inlined_html = inlineCSS(input_html, output_css);
+    // Protect template expressions before processing
+    const protected_html = protectTemplates(input_html);
+    
+    const inlined_html = inlineCSS(protected_html, output_css);
     const hyped_inline_html = hypeJuicedHtml(inlined_html)
 
     // Post process
     const processedhtml = postHypeCss(hyped_inline_html,{basePx:post_process_base_px})
+    // Restore template expressions after processing
+    const final_html = restoreTemplates(processedhtml);
 
-    fs.writeFileSync(output_html_path, processedhtml);
+    fs.writeFileSync(output_html_path, final_html);
   }
 }
 

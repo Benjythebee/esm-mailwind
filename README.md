@@ -12,6 +12,7 @@ This project is based of 'mailwind' developped by @soheilpro. However, I had a f
 | Convert 'rem' to 'px' | ✔️  | ❌  |
 | Resolves CSS variables | ✔️  | ❌  |
 | ESM-friendly | ✔️  | ❌  |
+| Support Handlebars | ✔️  | ❌  |
 
 ## Install
 ```
