@@ -1,6 +1,6 @@
 {
   "name": "esm-mailwind",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Use Tailwind CSS to design HTML emails. ESM version.",
   "license": "MIT",
   "keywords": [
