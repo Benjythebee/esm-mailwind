@@ -3,6 +3,16 @@
   "version": "1.0.2",
   "description": "Use Tailwind CSS to design HTML emails. ESM version.",
   "license": "MIT",
+  "keywords": [
+    "tailwind",
+    "tailwindcss",
+    "email",
+    "html",
+    "css",
+    "juice",
+    "cli",
+    "import"
+  ],
   "homepage": "https://github.com/Benjythebee/esm-mailwind",
   "bin": {
     "mailwind": "./src/index.js"
